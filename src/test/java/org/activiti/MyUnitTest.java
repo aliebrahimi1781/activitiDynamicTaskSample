@@ -72,8 +72,7 @@ public class MyUnitTest {
 		showInfo(processEngine);
 		
 		completeOneTask(processEngine, "dynTsk001");
-		completeOneTask(processEngine, "14");
-		completeOneTask(processEngine, "12");
+		completeOneTask(processEngine, "13");
 
 		
 		/*
