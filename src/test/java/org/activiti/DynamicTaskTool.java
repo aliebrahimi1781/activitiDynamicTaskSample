@@ -33,15 +33,9 @@ public class DynamicTaskTool {
 		Execution newExecution = executionEntity.createExecution();
 		ExecutionEntity newExectionEntity = (ExecutionEntity) newExecution;
 		
-		newExectionEntity.setVariable("isDynamic", "salam");
-	    
 		ActivityImpl newActivty = new ActivityImpl(activiyName, null);
 		
-		
-		
-		newActivty.setActivityBehavior(myFactory.createDynamicTaskActivitiBehavior(null));
 		newExectionEntity.setActivity(newActivty);
-
 		
 		TaskService taskService = execution.getEngineServices().getTaskService();
 

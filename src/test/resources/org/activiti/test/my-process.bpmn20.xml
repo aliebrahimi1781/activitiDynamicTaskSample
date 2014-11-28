@@ -50,7 +50,7 @@ println("after recieve. Number of created tasks=" + currentTaskNumber + " number
         <omgdc:Bounds height="55.0" width="105.0" x="410.0" y="370.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="twoStepTask2" id="BPMNShape_twoStepTask2">
-        <omgdc:Bounds height="55.0" width="105.0" x="567.0" y="380.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="567.0" y="370.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="oneStepTask" id="BPMNShape_oneStepTask">
         <omgdc:Bounds height="55.0" width="105.0" x="410.0" y="460.0"></omgdc:Bounds>
@@ -94,7 +94,7 @@ println("after recieve. Number of created tasks=" + currentTaskNumber + " number
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
         <omgdi:waypoint x="515.0" y="397.0"></omgdi:waypoint>
-        <omgdi:waypoint x="567.0" y="407.0"></omgdi:waypoint>
+        <omgdi:waypoint x="567.0" y="397.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

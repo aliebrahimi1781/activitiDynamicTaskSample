@@ -44,7 +44,6 @@ public class MyUserTaskActiviyBehavior extends UserTaskActivityBehavior {
 		   if (outgoingTransitions.size() == 0) {
 			   
 				   ActivityExecution parentExecution = execution.getParent();
-				   System.out.println("this is an end task.");
 				   increaseCompletedNumber(execution);
 				   ((ExecutionEntity) execution).setScope(false);
 				   ((ExecutionEntity) execution).performOperation(AtomicOperation.ACTIVITY_END);

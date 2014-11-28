@@ -25,6 +25,7 @@ import org.junit.Test;
 public class MyUnitTest {
 	
 	static DynamicTaskTool dynamicTaskTool = new DynamicTaskTool();
+	
 
 	private void showInfo(ProcessEngine processEngine) {
 		TaskService taskService = processEngine.getTaskService();
@@ -204,11 +205,6 @@ public class MyUnitTest {
 	public void testMixOneAndTwoSteps() {
 		processInstance = runtimeService.startProcessInstanceByKey("my-process");
 		ExecutionEntity execution = (ExecutionEntity) runtimeService.createExecutionQuery().executionId(processInstance.getId()).singleResult();
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
-
-
-		System.out.println("at start");
 		
 		assertNotNull(processInstance);
 		
@@ -217,15 +213,8 @@ public class MyUnitTest {
 		Task initialTask = taskService.createTaskQuery().singleResult();
 		
 
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
-
 		// create extra one task
 		dynaTaskService.createOneTask(execution);
-
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
-		
 		// there should be two tasks waiting now. 
 		assertEquals(2, taskService.createTaskQuery().count());
 		
@@ -235,8 +224,6 @@ public class MyUnitTest {
 
 		// now create one additianl two step task
 		dynaTaskService.createTwoTasks(execution);
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
 
 		// there should be two tasks waiting, one the old one and one the new created one
 		assertEquals(3, taskService.createTaskQuery().count());
@@ -247,8 +234,6 @@ public class MyUnitTest {
 		// close the initial one
 		taskService.complete(initialTask.getId());
 
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
 
 		// there should be two tasks waiting
 		assertEquals(2, taskService.createTaskQuery().count());
@@ -257,18 +242,12 @@ public class MyUnitTest {
 		// close the two stepTask
 		
 		taskService.complete(extraTwoTask.getId());
-
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
-
 		// there should be again two tasks, as the deleted one will be replaced by the proceeding task
 		assertEquals(2, taskService.createTaskQuery().count());
 
 		
 		taskService.complete(extraOneTask.getId());
 
-		System.out.println("created = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_NUMBER_STRING));
-		System.out.println("completed = " + runtimeService.getVariable(execution.getId(), DynamicTaskTool.DYNATASK_COMPLETERD_STRING));
 
 		// now there should be one task
 		assertEquals(1, taskService.createTaskQuery().count());

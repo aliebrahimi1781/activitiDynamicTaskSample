@@ -14,11 +14,5 @@ public class MyCustomActivitiBehaviorFactory extends DefaultActivityBehaviorFact
 		    return new MyUserTaskActiviyBehavior(taskDefinition);
 		  }
 
-	  public DynamicTaskActivityBehavior createDynamicTaskActivitiBehavior(TaskDefinition taskDefinition) {
-	    return new DynamicTaskActivityBehavior(taskDefinition);
-	  }
-	  
-	  
-
 
 }
